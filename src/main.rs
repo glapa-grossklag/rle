@@ -1,21 +1,12 @@
-use std::fs::{File, OpenOptions};
+use std::fs::File;
 use std::io::prelude::*;
 
-extern crate clap;
 use clap::App;
 
 fn main() {
     // Parse CLI arguments.
     let yaml = clap::load_yaml!("clap.yml");
     let matches = App::from_yaml(yaml).get_matches();
-
-
-    // let mut output = File::create("out2.txt").unwrap();
-    // match output.write_all(b"abc") {
-    //     Err(why) => panic!("Cannot write: {}", why),
-    //     Ok(_) => println!("I wrote something!"),
-    // }
-
 
     // Handle encoding.
     if let Some(matches) = matches.subcommand_matches("encode") {
