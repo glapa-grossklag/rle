@@ -1,7 +1,7 @@
 # Run-Length Encoding
 
-Run-length encoding (RLE) is one of the simplest and intuitive compression methods. In
-short, RLE works by encoding repeating strings of symbols as the length of the
+Run-length encoding (RLE) is one of the simplest and most intuitive compression
+methods. In short, RLE encodes repeating strings of symbols as the length of the
 run. An example illustrates this best. Let's say we have the following data:
 
 	Oh noooooo!
@@ -25,7 +25,8 @@ beginning of a run:
 
 	Oh noo4!
 
-This is how this program encodes and decodes data!
+This is how this program encodes and decodes data, and is known as traditional
+run-length encoding.
 
 # Usage
 
@@ -42,7 +43,3 @@ SUBCOMMANDS:
     encode    Encode a file.
     help      Prints this message or the help of the given subcommand(s)
 ```
-
-# Todo
-
-- [ ] Write some tests.
