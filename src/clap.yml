@@ -2,10 +2,6 @@ name: rle
 version: "0.1"
 author: Miles Glapa-Grossklag <miles@glapa-grossklag.com>
 about: Compress and decompress data using run-length encoding.
-args:
-    - verbose:
-        short: v
-        help: Sets the level of verbosity
 subcommands:
     - encode:
         about: Encode a file.
@@ -18,6 +14,9 @@ subcommands:
             help: Sets the output file to use
             required: true
             index: 2
+        - verbose:
+            short: v
+            help: Displays statistics
     - decode:
         about: Decode a file.
         args:

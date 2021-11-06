@@ -10,22 +10,35 @@ fn main() {
 
     // Handle encoding.
     if let Some(matches) = matches.subcommand_matches("encode") {
+        // Keep some statistics.
+        let mut bytes_read: usize = 0;
+        let mut bytes_written: usize = 0;
+
         let input_file = matches.value_of("INPUT").unwrap();
         let output_file = matches.value_of("OUTPUT").unwrap();
 
+        // Read the input file.
         let mut input = File::open(input_file).unwrap();
         let mut data: Vec<u8> = Vec::new();
         match input.read_to_end(&mut data) {
             Err(why) => panic!("Cannot read: {}", why),
-            Ok(_) => (),
+            Ok(n) => bytes_read += n,
         }
 
         let encoded = encode(data);
 
+        // Write to the output file.
         let mut output = File::create(output_file).unwrap();
         match output.write_all(&encoded) {
             Err(why) => panic!("Cannot write: {}", why),
-            Ok(_) => (),
+            Ok(_) => bytes_written += encoded.len(),
+        }
+
+        if matches.is_present("verbose") {
+            let compression_ratio = 1.0 - (bytes_written as f64 / bytes_read as f64);
+            eprintln!("Uncompressed file size: {}", bytes_read);
+            eprintln!("Compressed file size: {}", bytes_written);
+            eprintln!("Compression ratio: {:.2}%", compression_ratio * 100.0);
         }
     }
 

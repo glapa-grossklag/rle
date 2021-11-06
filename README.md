@@ -31,12 +31,11 @@ This is how this program encodes and decodes data!
 
 ```
 USAGE:
-    rle [FLAGS] [SUBCOMMAND]
+    rle [SUBCOMMAND]
 
 FLAGS:
     -h, --help       Prints help information
     -V, --version    Prints version information
-    -v               Sets the level of verbosity
 
 SUBCOMMANDS:
     decode    Decode a file.
@@ -47,4 +46,3 @@ SUBCOMMANDS:
 # Todo
 
 - [ ] Write some tests.
-- [ ] Add statistics.
